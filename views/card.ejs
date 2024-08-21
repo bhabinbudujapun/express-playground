@@ -14,7 +14,7 @@
     <!-- component -->
     <div class="flex max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div class="relative m-0 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none">
-            <img src="/images/team-img.jpeg" alt="ui/ux review check" />
+            <img src="/upload/team-img.jpeg" alt="ui/ux review check" />
         </div>
         <div class="p-6">
             <h4
@@ -26,18 +26,15 @@
                 and add helpful new features.
             </p>
         </div>
-        <div class="flex items-center justify-between p-6">
-            <div class="flex items-center -space-x-3">
-                <img alt="natali craig" src="/images/team-member-jane.jpeg"
-                    class="relative inline-block h-9 w-9 rounded-full border-2 border-white object-cover object-center hover:z-10"
-                    data-tooltip-target="author-1" />
-                <img alt="tania andrew" src="/images/team-member-john.jpeg"
-                    class="relative inline-block h-9 w-9 rounded-full border-2 border-white object-cover object-center hover:z-10"
-                    data-tooltip-target="author-2" />
-
-            </div>
-            <button
-                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Choose</button>
+        <div class="flex flex-col justify-between gap-4 p-6">
+            <form action="/upload" enctype="multipart/form-data" method="POST">
+                <label for="myFile">Select File</label>
+                <input type="file" name="myFile" id="myFile">
+                <div>
+                    <button type="submit"
+                        class="flex text-white bg-indigo-500 border-0 py-1 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg">Upload</button>
+                </div>
+            </form>
         </div>
     </div>
     </div>
