@@ -1,52 +1,33 @@
 const express = require("express");
-const app = express();
-
 const multer = require("multer");
 
 const PORT = 3000;
+
+// Create instance of express.
+const app = express();
+
+//Create instance of multer
+const images = multer({ dest: "/images" });
 
 app.use(express.static("public"));
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
 
+// Include express.json() middleware
 app.use(express.json());
+
+// Include express.urlencoded() middleware
 app.use(express.urlencoded({ extended: true }));
-
-// Set up Multer storage
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "/upload");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
-
-const upload = multer({ storage: storage });
-
-// Handle file uploads
-app.post("/upload", (req, res) => {
-  // res.send("<h1> Hello, world </h1>");
-  // upload(req, res, (error) => {
-  //   if (error) {
-  //     res.render("card", {
-  //       message: error,
-  //     });
-  //   } else {
-  //     res.render("card", {
-  //       message: "Successfully uploaded...",
-  //       filename: `upload/${req.file.filename}`,
-  //     });
-  //   }
-  // });
-  console.log(req.body);
-  console.log(req.file);
-  res.send("File successfully uploaded!");
-});
 
 app.get("/", (req, res) => {
   res.render("card");
+});
+
+app.post("/images", images.single('myFile'), (req, res) => {
+  console.log("Body: ", req.body);
+  console.log("File: ", req.file);
+  console.log("File Successfully Uploaded. . .");
 });
 
 app.listen(PORT, () => {
