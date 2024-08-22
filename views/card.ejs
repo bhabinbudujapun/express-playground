@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../public/stylesheets/style.css"> -->
     <link rel="stylesheet" href="/stylesheets/output.css">
-    <!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
     <title>Express Js</title>
 </head>
 
@@ -14,7 +12,8 @@
     <!-- component -->
     <div class="flex max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div class="relative m-0 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none">
-            <img src="/upload/team-img.jpeg" alt="ui/ux review check" />
+            <img src="<%= typeof filename == 'undefined' ? '/images/team-img.jpeg' : filename %>"
+                alt="ui/ux review check" />
         </div>
         <div class="p-6">
             <h4
@@ -26,19 +25,15 @@
                 and add helpful new features.
             </p>
         </div>
-        <div class="flex flex-col justify-between gap-4 p-6">
-            <form action="/upload" enctype="multipart/form-data" method="POST">
-                <label for="myFile">Select File</label>
-                <input type="file" name="myFile" id="myFile">
-                <div>
-                    <button type="submit"
-                        class="flex text-white bg-indigo-500 border-0 py-1 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg">Upload</button>
-                </div>
-            </form>
-        </div>
+        <form action="/images" enctype="multipart/form-data" method="POST" class="flex flex-col px-6 gap-4">
+            <label for="myFile">Select File</label>
+            <input type="file" name="myFile" id="myFile">
+            <div>
+                <button type="submit"
+                    class="flex text-white bg-indigo-500 border-0 mb-2 py-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg">Upload</button>
+            </div>
+        </form>
     </div>
-    </div>
-    <!-- stylesheet -->
 </body>
 
 </html>
