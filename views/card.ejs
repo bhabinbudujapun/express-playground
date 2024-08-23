@@ -27,13 +27,23 @@
         </div>
         <form action="/images" enctype="multipart/form-data" method="POST" class="flex flex-col px-6 gap-4">
             <label for="myFile">Select File</label>
-            <input type="file" name="myFile" id="myFile">
+            <input type="file" name="myFile" id="myFile" onchange="validateFile()">
             <div>
-                <button type="submit"
-                    class="flex text-white bg-indigo-500 border-0 mb-2 py-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg">Upload</button>
+                <button type="submit" id="uploadBtn" disabled
+                    class="flex text-white bg-indigo-500 border-0 mb-2 py-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    Upload
+                </button>
             </div>
         </form>
     </div>
+
+    <script>
+        function validateFile() {
+            const fileInput = document.getElementById('myFile');
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = !fileInput.value; // Enable button only if a file is selected
+        }
+    </script>
 </body>
 
 </html>
