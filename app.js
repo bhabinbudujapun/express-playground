@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.get("/", (req, res) => {
-  res.render("card", { filename: undefined });
+  res.render("card");
 });
 
 app.post("/images", upload.single("myFile"), (req, res) => {
