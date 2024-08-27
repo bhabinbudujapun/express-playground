@@ -19,6 +19,11 @@ app.use(express.json());
 // Include express.urlencoded() middleware
 app.use(express.urlencoded({ extended: true }));
 
+// Include all the routes
+const auth = require("/routes/api/auth.js");
+
+app.use("/api/auth", auth);  // Actual Routes
+
 // Set up multer for storing uploaded images in 'public/images' directory
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
